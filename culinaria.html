@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="segundo.css">
+</head>
+<body class="bg-secondary-subtle">
+    <section class="container-fluid">
+        <div class="row border border-dark border-2 " id="navbar">
+          <h1 class="text-light col-md-9 mt-5"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-bar-left" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M12.5 15a.5.5 0 0 1-.5-.5v-13a.5.5 0 0 1 1 0v13a.5.5 0 0 1-.5.5ZM10 8a.5.5 0 0 1-.5.5H3.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L3.707 7.5H9.5a.5.5 0 0 1 .5.5Z"/>
+          </svg> <a href="home.html" class="text-light"> Voltar</a></h1>
+          <img  src="imgs/Captura de tela 2023-05-10 191301.png" alt="" class="col-md-3" id="logo" height="150px" width="150px">
+        </div>  
+      </section>
+
+      <h1 class="text-center">Serviços de Gastronomia</h1>
+      <p>Confira as empresas e serviços individuais nessa categoria:</p>
+
+      <section class="container-fluid"><div class="row row-cols-1 row-cols-md-2 g-4">
+        <div class="col">
+          <div class="card">
+            <img class="imagem" src="imgs/servico-de-buffet-para-evento-em-sao-paulo.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Kairos Gastronomia</h5>
+              <p class="card-text">Confira nossos serviços para toda a alimentação do seu evento social como aniversários, shows, com sugestão de cardápios e personalização.</p>
+              <a href="perfil.html"><br><br> Ver Página</a>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card">
+            <img class="imagem" src="imgs/Avom7wN4SVGDpig480x360.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Catharina Buffet</h5>
+              <p class="card-text">A satisfação plena de clientes e convidados é o nosso melhor ingrediente. Fazer com que todos sintam-se à vontade em qualquer situação. Esse é o termômetro que mede o sucesso dos nossos eventos.
+                Desde 1953, o Buffet Catharina domina com especialidade a arte de bem receber.</p>
+                <a href="">Ver Página</a>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card">
+            <img class="imagem" src="imgs/cozz.jpeg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Renata Mattos-Cozinheira</h5>
+              <p class="card-text">Você está procurando por uma experiência culinária personalizada e memorável? Apresentamos a você Renata, uma talentosa cozinheira apaixonada por criar momentos especiais através da comida. Renata está pronta para tornar seus eventos e ocasiões verdadeiramente inesquecíveis.</p>
+              <a href="perfil.html"> Ver Página</a>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card">
+            <img class="imagem" src="imgs/d0ee60bfad29fdcb333d77db83cd1f73bab9bfef.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Amélia - Cozinha mineira</h5>
+              <p class="card-text">Com um cardápio personalizado, posso criar uma experiência culinária sob medida para você e seus convidados. Desde os clássicos da culinária mineira, como feijão tropeiro, tutu de feijão, pão de queijo e frango com quiabo, até pratos contemporâneos inspirados nas tradições regionais, estou pronta para surpreender seu paladar com uma variedade de sabores únicos.</p>
+                <a href=""> Ver Página</a>
+            </div>
+          </div>
+        </div>
+        
+      </div></section>
+      <div class="container-fluid"><section id="tela" class="row"></section></div>
+</body>
+<script>
+  let str =''
+  fetch('http://localhost:3000/logadas')
+  .then(res => res.json())
+  .then(data => {
+     for(let i=1; i<data.length; i++) {
+       let APIresponse = data[i]
+       let nome = APIresponse.nome
+       if(APIresponse.servicos === "Cozinheiro" || APIresponse.servicos === "cozinheiro" || APIresponse.servicos === "cozinheira"  || APIresponse.servicos === "Cozinheira"){
+        console.log('nome =',nome)
+        str +=`<div class="col-6 mx-2 my-4" id="cardnovo">
+          <div class="card">
+            <img class="imagem" src="imgs/Captura de tela 2023-06-04 152200.png" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">${APIresponse.nome}</h5>
+              <p class="card-text">Email: ${APIresponse.email}<br>Telefone de contato: ${APIresponse.telefone} </p>
+                <a href="santacecilia.html"><br> Ver Página</a>
+            </div>
+          </div>
+        </div>
+      </div>`
+       }
+       document.getElementById('tela').innerHTML = str
+     }
+     
+  
+    })
+  </script>
+</html>
