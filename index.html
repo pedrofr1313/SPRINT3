@@ -1,60 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="rodape.css">
+    <title>Click Jobs - Cadastro de Serviços</title>
+    <!--Bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+
 </head>
-<body class="bg-secondary-subtle">
+
+<body>
+
+    <navbar>
     <section class="container-fluid">
-      <div class="row border border-dark border-2 " id="navbar">
-        <h1 class="text-light col-md-9 mt-5">Seja bem-vindo a Click Jobs!</h1>
-        <img src="imgs/Captura de tela 2023-05-10 191301.png" alt="" class="col-md-3" id="logo" height="150px" width="150px">
-      </div>  
-    </section>
-
-      <h1 class="principal"> Principais serviços</h1>
-      <h2 class="principal">Selecione o profissional ideal de acordo com sua necessidade</h2>
+        <div class="row " id="navbar" style=" background-color: rgb(180, 19, 19);">
+            <h1 class="text-light"> <a href="" class="text-light">Click Jobs</a> </h1>
+        </div>
+      </section>
+    </navbar>
 
 
 
-    <section class="flex">
-        
-      <div class="card mb-4"> 
-       <img src="imgs/OIP (4).jpg" alt="diarista" >
-       <h1 class="titulo">Serviço de diarista</h1>
-<a href="faxina.html" class="text-dark"><br> <br> Ver detalhes</a>
-     </div>
-<div class="card mb-4">
-<img src="imgs/dia-do-chef-de-cozinha.jpg" alt="cozinheiro"  >
-<h1 class="titulo">Profissionais de gastronomia</h1>
-<a href="culinaria.html" class="text-dark" ><br> <br> Ver detalhes</a>
+
+
+ <div style="background-color: rgb(255, 88, 88);">
+    <!--Sessão de cadastro-->
+    <div class="container" style="background-color: white;">
+        <main>
+            <div class="container mt-5">
+                <div class="row">
+                    <div class="col-md-6 offset-md-3">
+                        <h2>Cadastro de Provedor de Serviços</h2>
+
+                        <h6 style="padding: 5px;">Então você deseja se cadastrar como provedor de serviços! Precisaremos de apenas alguns dados seus para validá-lo. </h6>
+
+                        <form>
+                            <div class="form-group">
+                                <!--Preenchimento-->
+
+                                <label for="nome" style="padding-top: 10px;">Nome:</label>
+                                <input type="text" class="form-control" id="nome" placeholder="Nome Completo" required >
+                            </div>
+
+                            <div>
+                                <label for="serviços" style="padding-top: 10px;">Serviço:</label>
+                                <input type="text" class="form-control" id="serviços" placeholder="Serviço provido"
+                                    required>
+                            </div>
+
+
+                            <label for="opcao1">Autonômo</label>
+                            <input type="checkbox" id="opcao1" name="opcoes" value="opcao1" style="margin-right: 20px;" onclick="desmarcarOpcao('opcao2')">
+
+
+                            <label for="opcao2">Empresa/Loja</label>
+                            <input type="checkbox" id="opcao2" name="opcoes" value="opcao2" onclick="desmarcarOpcao('opcao1')" >
+
+
+                            <div id="nomeEmpresaLoja" style="display: none; padding-top: 10px;">
+                                <label for="EmpresaLoja">Nome da Empresa/Loja</label>
+                                <input type="text" class="form-control" id="EmpresaLoja"
+                                    placeholder="Nome da Empresa/Loja" required>
+                            </div>
+
+
+
+
+                            <div class="form-group" style="padding-top: 10px;">
+                                <label for="email">Email:</label>
+                                <input type="email" class="form-control" id="email" placeholder="Seu email" required>
+                            </div>
+
+                            <div style="padding-top: 10px;">
+                                <label for="telefone">Telefone:</label>
+                                <input type="text" class="form-control" id="telefone" placeholder="Seu telefone"
+                                    required>
+                            </div>
+
+                            <div class="form-group" style="padding-top: 10px;">
+                                <label for="cpf">CPF</label>
+                                <input type="text" class="form-control" id="cpf" placeholder="Seu CPF" required onblur="validaCPF(this)">
+                            </div>
+
+                            <div class="form-group" style="padding-top: 10px;">
+                                <label for="senha">Senha:</label>
+                                <input type="password" class="form-control" id="senha" name="senha" autocomplete="off"
+                                    placeholder="Sua senha" required minlength="6">
+                            </div>
+
+                            <div class="form-group" style="padding-top: 10px;">
+                                <label for="cep">CEP</label>
+                                <input type="text" class="form-control" id="cep" placeholder="Seu CEP" required onblur="validarCep(this)">
+                            </div>
+
+
+                            <div style="padding-top: 10px; padding-bottom: 10px;">
+                                <button type="submit" class="btn btn-primary" id="botaoSubmit">Cadastrar</button>
+
+                        
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
 </div>
-</div>
-<div class="card mb-4">
-  <img src="imgs/OIP (5).jpg" alt="moveis" >
-  <h1 class="titulo">Marcenaria e montagem de móveis</h1>
-<a href="marcenaria.html" class="text-dark">  Ver detalhes</a>
-</div>
 
 
-</section>
 
 
-    <section class="container-fluid ">
-        <footer class="row ">
-            <a class="text-light py-1 px-3" href="pagperfil.html"><button class="btn btn-outline-light" type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-                <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
-              </svg></button>  Meu Perfil</a>
-        </footer>
 
-    </section>
+
+
+
+<!--Copyright-->
+<footer>
+<h10>
+    <div class="bg-light-subtle text-center">
+        2023 Copyright Click Jobs
+      </div>
+</footer>
+
 </body>
-<script src="java.js"></script>
-</html>
 
+</html>
+<!--Bootstrap-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+    crossorigin="anonymous"></script>
+    <!--Javascript-->
+<script src="cadastro_fornecedores.js"></script>
